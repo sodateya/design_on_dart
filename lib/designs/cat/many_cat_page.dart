@@ -15,13 +15,11 @@ class ManyCatPage extends ConsumerWidget {
             Center(
               child: Wrap(
                 alignment: WrapAlignment.center,
-                spacing: 10.0, // Catウィジェット間の横方向の間隔
-                runSpacing: 10.0, // Catウィジェット間の縦方向の間隔
                 children: List.generate(
                   200, // 生成するCatウィジェットの数
                   (index) => const SizedBox(
-                    width: 200,
-                    height: 200,
+                    width: 150,
+                    height: 150,
                     child: ColorCat(),
                   ),
                 ),

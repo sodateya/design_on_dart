@@ -37,6 +37,7 @@ class CatPainter extends CustomPainter {
     final Path path = Path();
     final double width = size.width;
     final double height = size.height;
+
     path.moveTo(width * 0.2, height * 0.3);
     path.lineTo(width * 0.3, height * 0.1);
     path.lineTo(width * 0.4, height * 0.25);
@@ -89,6 +90,8 @@ class CatPainter extends CustomPainter {
 
     for (int i = 0; i < rightXStartPoints.length; i++) {
       var rightBeardPath = Path();
+      var leftBeardPath = Path();
+
       rightBeardPath.moveTo(
         size.width * (rightXStartPoints[i] - horizontalOffset),
         size.height * (rightYStartPoints[i] + verticalOffset),
@@ -99,7 +102,6 @@ class CatPainter extends CustomPainter {
       );
       canvas.drawPath(rightBeardPath, beardPaint);
 
-      var leftBeardPath = Path();
       leftBeardPath.moveTo(
         size.width * (leftXStartPoints[i] + horizontalOffset),
         size.height * (leftYStartPoints[i] + verticalOffset),
@@ -127,13 +129,16 @@ class CatPainter extends CustomPainter {
       ..color = rightIrisColor ?? Colors.black
       ..style = PaintingStyle.fill;
 
+    var leftEyeFillPaints = Paint()
+      ..color = leftIrisColor ?? Colors.black
+      ..style = PaintingStyle.fill;
+
     final Path rightEyePath = Path();
+    final Path leftEyePath = Path();
+
     rightEyePath.moveTo(width * 0.6, height * 0.4);
-    rightEyePath.arcToPoint(
-      Offset(width * 0.7, height * 0.4),
-      radius: Radius.circular(width * 0.05),
-      clockwise: false,
-    );
+    rightEyePath.arcToPoint(Offset(width * 0.7, height * 0.4),
+        radius: Radius.circular(width * 0.05), clockwise: false);
     rightEyePath.close();
     canvas.drawPath(rightEyePath, eyePaint);
 
@@ -146,34 +151,31 @@ class CatPainter extends CustomPainter {
     canvas.drawCircle(
         rightEyeReflectionsCenter, rightEyeReflectionsRadius, reflectionPaint);
 
-    var leftEyeFillPaints = Paint()
-      ..color = leftIrisColor ?? Colors.black
-      ..style = PaintingStyle.fill;
-    final Path leftEyePath = Path();
     leftEyePath.moveTo(width * 0.3, height * 0.4);
     leftEyePath.arcToPoint(
       Offset(width * 0.4, height * 0.4),
       radius: Radius.circular(width * 0.05),
       clockwise: false,
     );
-
     leftEyePath.close();
     canvas.drawPath(leftEyePath, eyePaint);
+
     Offset leftEyeCenter = Offset(width * 0.35, height * 0.425);
     double leftEyeRadius = width * 0.025;
     canvas.drawCircle(leftEyeCenter, leftEyeRadius, leftEyeFillPaints);
+
     Offset leftEyeReflectionsCenter = Offset(width * 0.34, height * 0.415);
     double leftEyeReflectionsRadius = width * 0.005;
     canvas.drawCircle(
         leftEyeReflectionsCenter, leftEyeReflectionsRadius, reflectionPaint);
 
+    /// Mouth
     var strokePaint = Paint()
       ..color = Colors.black
       ..strokeWidth = width * 0.005
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
 
-    /// Mouth
     final Path mouthPath = Path();
     mouthPath.moveTo(width * 0.5, height * 0.41);
     mouthPath.quadraticBezierTo(
@@ -184,11 +186,7 @@ class CatPainter extends CustomPainter {
     canvas.drawPath(mouthPath, strokePaint);
     mouthPath.moveTo(width * 0.47, height * 0.5);
     mouthPath.quadraticBezierTo(
-      width * 0.5,
-      height * 0.52,
-      width * 0.53,
-      height * 0.5,
-    );
+        width * 0.5, height * 0.52, width * 0.53, height * 0.5);
     canvas.drawPath(mouthPath, strokePaint);
 
     /// Nose
@@ -202,7 +200,6 @@ class CatPainter extends CustomPainter {
         width * 0.5, height * 0.3915, width * 0.5175, height * 0.4195);
     nosePath.quadraticBezierTo(
         width * 0.5, height * 0.43, width * 0.4825, height * 0.4195);
-
     canvas.drawPath(nosePath, nosePaint);
   }
 
