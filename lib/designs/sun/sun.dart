@@ -25,26 +25,26 @@ class SunPainter extends CustomPainter {
     canvas.drawCircle(center, radius, paint);
 
     paint.color = Colors.orange;
-    final triangleHeight = radius / 2;
-    final triangleOffset = radius / 6;
+    final patternHeight = radius / 2;
+    final patternOffset = radius / 6;
     const angleIncrement = 2 * pi / 8;
 
     for (int i = 0; i < 8; i++) {
       final angle = i * angleIncrement;
       final x =
-          center.dx + (radius + triangleHeight + triangleOffset) * cos(angle);
+          center.dx + (radius + patternHeight + patternOffset) * cos(angle);
       final y =
-          center.dy + (radius + triangleHeight + triangleOffset) * sin(angle);
+          center.dy + (radius + patternHeight + patternOffset) * sin(angle);
 
       final path = Path();
       path.moveTo(x, y);
       path.lineTo(
-        center.dx + (radius + triangleOffset) * cos(angle - angleIncrement / 4),
-        center.dy + (radius + triangleOffset) * sin(angle - angleIncrement / 4),
+        center.dx + (radius + patternOffset) * cos(angle - angleIncrement / 4),
+        center.dy + (radius + patternOffset) * sin(angle - angleIncrement / 4),
       );
       path.lineTo(
-        center.dx + (radius + triangleOffset) * cos(angle + angleIncrement / 4),
-        center.dy + (radius + triangleOffset) * sin(angle + angleIncrement / 4),
+        center.dx + (radius + patternOffset) * cos(angle + angleIncrement / 4),
+        center.dy + (radius + patternOffset) * sin(angle + angleIncrement / 4),
       );
       path.close();
       canvas.drawPath(path, paint);

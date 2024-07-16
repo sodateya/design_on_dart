@@ -1,39 +1,31 @@
+import 'package:design_on_dart/designs/cat/cat.dart';
 import 'package:design_on_dart/designs/sun/sun.dart';
-import 'package:design_on_dart/designs/sun/sun_provider.dart';
+import 'package:design_on_dart/designs/top/component/go_design_button.dart';
+import 'package:design_on_dart/designs/top/component/many_cat_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class TopScreen extends ConsumerWidget {
+class TopScreen extends StatelessWidget {
   const TopScreen({super.key});
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final globalKey = ref.watch(sunGlobalKeyProvider);
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: SingleChildScrollView(
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView(
           scrollDirection: Axis.vertical,
-          child: Center(
-            child: RepaintBoundary(
-                key: globalKey,
-                child: Container(
-                    color: Colors.transparent,
-                    child: const Stack(
-                      children: [
-                        SizedBox(width: 4500, height: 4500, child: Sun()),
-                      ],
-                    ))),
-          ),
+          children: const [
+            GoDesignButton(
+              designName: 'Sun',
+              imageWidget: Sun(),
+            ),
+            GoDesignButton(
+              designName: 'Cat',
+              imageWidget: Cat(),
+            ),
+            ManyCatButton()
+          ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          final globalKey = ref.read(sunGlobalKeyProvider);
-          ref.read(sunProviderProvider.notifier).capturePng(globalKey);
-        },
-        tooltip: 'Capture PNG',
-        child: const Icon(Icons.camera),
       ),
     );
   }

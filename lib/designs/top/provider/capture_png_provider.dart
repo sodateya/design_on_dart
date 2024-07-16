@@ -2,14 +2,13 @@ import 'dart:html' as html;
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 
-import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'sun_provider.g.dart';
+part 'capture_png_provider.g.dart';
 
 @riverpod
-class SunProvider extends _$SunProvider {
+class CapturePng extends _$CapturePng {
   @override
   build() {
     return '';
@@ -34,10 +33,4 @@ class SunProvider extends _$SunProvider {
       print(e);
     }
   }
-}
-
-@riverpod
-GlobalKey sunGlobalKey(SunGlobalKeyRef ref) {
-  final GlobalKey globalKey = GlobalKey();
-  return globalKey;
 }
