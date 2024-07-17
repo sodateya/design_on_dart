@@ -67,7 +67,7 @@ class CatPainter extends CustomPainter {
   }
 
   void _drawPattern(Canvas canvas, Size size, Color color) {
-    final double width = size.height * 1.4;
+    final double width = size.width * 1.4;
     final double height = size.height * 1.4;
     final Paint patternPaint = Paint()..color = color;
     final Path patternPath = Path();
