@@ -31,6 +31,8 @@ class CatPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    canvas.translate(-size.width * 0.2, 0);
+
     _drawContour(canvas, size, contourColor);
     _drawPattern(canvas, size, patternColor);
     _drawBeard(canvas, size, beardColor);
@@ -44,7 +46,7 @@ class CatPainter extends CustomPainter {
       ..color = color
       ..style = PaintingStyle.fill;
     final Path path = Path();
-    final double width = size.width * 1.4;
+    final double width = size.height * 1.4;
     final double height = size.height * 1.4;
 
     path.moveTo(width * 0.2, height * 0.3);
@@ -65,7 +67,7 @@ class CatPainter extends CustomPainter {
   }
 
   void _drawPattern(Canvas canvas, Size size, Color color) {
-    final double width = size.width * 1.4;
+    final double width = size.height * 1.4;
     final double height = size.height * 1.4;
     final Paint patternPaint = Paint()..color = color;
     final Path patternPath = Path();
@@ -74,11 +76,11 @@ class CatPainter extends CustomPainter {
     patternPath.quadraticBezierTo(
         width * 0.5, height * 0.225, width * 0.6, height * 0.25);
     patternPath.lineTo(width * 0.6, size.height * 1.4 * 0.25);
-    patternPath.lineTo(size.width * 1.4 * 0.58, size.height * 1.4 * 0.375);
-    patternPath.lineTo(size.width * 1.4 * 0.545, size.height * 1.4 * 0.24);
-    patternPath.lineTo(size.width * 1.4 * 0.5, size.height * 1.4 * 0.375);
-    patternPath.lineTo(size.width * 1.4 * 0.475, size.height * 1.4 * 0.24);
-    patternPath.lineTo(size.width * 1.4 * 0.43, size.height * 1.4 * 0.375);
+    patternPath.lineTo(size.height * 1.4 * 0.58, size.height * 1.4 * 0.375);
+    patternPath.lineTo(size.height * 1.4 * 0.545, size.height * 1.4 * 0.24);
+    patternPath.lineTo(size.height * 1.4 * 0.5, size.height * 1.4 * 0.375);
+    patternPath.lineTo(size.height * 1.4 * 0.475, size.height * 1.4 * 0.24);
+    patternPath.lineTo(size.height * 1.4 * 0.43, size.height * 1.4 * 0.375);
     canvas.drawPath(patternPath, patternPaint);
   }
 
@@ -106,7 +108,7 @@ class CatPainter extends CustomPainter {
     final Path rightEyePath = Path();
     final Path leftEyePath = Path();
 
-    final double width = size.width * 1.4;
+    final double width = size.height * 1.4;
     final double height = size.height * 1.4;
 
     rightEyePath.moveTo(width * 0.6, height * 0.4);
@@ -146,10 +148,10 @@ class CatPainter extends CustomPainter {
   void _drawMouth(Canvas canvas, Size size) {
     final Paint strokePaint = Paint()
       ..color = Colors.black
-      ..strokeWidth = size.width * 1.4 * 0.005
+      ..strokeWidth = size.height * 1.4 * 0.005
       ..style = PaintingStyle.stroke;
 
-    final double width = size.width * 1.4;
+    final double width = size.height * 1.4;
     final double height = size.height * 1.4;
 
     final Path mouthPath = Path();
@@ -170,7 +172,7 @@ class CatPainter extends CustomPainter {
       ..color = Colors.pink
       ..style = PaintingStyle.fill;
 
-    final double width = size.width * 1.4;
+    final double width = size.height * 1.4;
     final double height = size.height * 1.4;
 
     final Path nosePath = Path();
@@ -185,7 +187,7 @@ class CatPainter extends CustomPainter {
   void _drawBeard(Canvas canvas, Size size, Color color) {
     var beardPaint = Paint()
       ..color = color
-      ..strokeWidth = size.width * 1.4 * 0.0025
+      ..strokeWidth = size.height * 1.4 * 0.0025
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
 
@@ -196,15 +198,15 @@ class CatPainter extends CustomPainter {
       var rightBeardPath = Path();
       var leftBeardPath = Path();
       rightBeardPath.moveTo(
-          size.width * 1.4 * 0.65, size.height * 1.4 * startPoints[i]);
+          size.height * 1.4 * 0.65, size.height * 1.4 * startPoints[i]);
       rightBeardPath.lineTo(
-          size.width * 1.4 * 0.85, size.height * 1.4 * endPoints[i]);
+          size.height * 1.4 * 0.85, size.height * 1.4 * endPoints[i]);
       canvas.drawPath(rightBeardPath, beardPaint);
 
       leftBeardPath.moveTo(
-          size.width * 1.4 * 0.35, size.height * 1.4 * startPoints[i]);
+          size.height * 1.4 * 0.35, size.height * 1.4 * startPoints[i]);
       leftBeardPath.lineTo(
-          size.width * 1.4 * 0.15, size.height * 1.4 * endPoints[i]);
+          size.height * 1.4 * 0.15, size.height * 1.4 * endPoints[i]);
       canvas.drawPath(leftBeardPath, beardPaint);
     }
   }
