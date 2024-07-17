@@ -46,7 +46,7 @@ class CatPainter extends CustomPainter {
       ..color = color
       ..style = PaintingStyle.fill;
     final Path path = Path();
-    final double width = size.height * 1.4;
+    final double width = size.width * 1.4;
     final double height = size.height * 1.4;
 
     path.moveTo(width * 0.2, height * 0.3);
