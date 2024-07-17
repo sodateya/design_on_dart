@@ -72,7 +72,7 @@ class DesignFrame extends ConsumerWidget {
                 final notifier = ref.read(imageSizeProvider.notifier);
                 notifier.resize1000();
               },
-              child: const Text('100'),
+              child: const Text('1000'),
             ),
             FloatingActionButton(
               heroTag: 'capture',
@@ -80,7 +80,7 @@ class DesignFrame extends ConsumerWidget {
                 ref.read(capturePngProvider.notifier).capturePng(globalKey);
               },
               tooltip: 'Capture PNG',
-              child: const Icon(Icons.camera),
+              child: const Icon(Icons.download),
             ),
           ],
         ));
