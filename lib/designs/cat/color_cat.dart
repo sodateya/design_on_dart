@@ -9,14 +9,14 @@ class ColorCat extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // ランダムな色を生成する
     final randomColor = ref.read(randomColorProvider.notifier);
-    final Color baseColor = randomColor.getRandomColor();
+    final Color contourColor = randomColor.getRandomColor();
     final Color patternColor = randomColor.getRandomColor();
     final Color rightIrisColor = randomColor.getRandomColor();
     final Color leftIrisColor = randomColor.getRandomColor();
 
     return CustomPaint(
       painter: CatPainter(
-        baseColor: baseColor,
+        contourColor: contourColor,
         patternColor: patternColor,
         rightIrisColor: rightIrisColor,
         leftIrisColor: leftIrisColor,
