@@ -6,7 +6,7 @@ part 'image_size_provider.g.dart';
 class ImageSize extends _$ImageSize {
   @override
   double build() {
-    return 4500;
+    return 200;
   }
 
   void add() {

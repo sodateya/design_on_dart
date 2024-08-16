@@ -13,6 +13,7 @@ class DesignFrame extends ConsumerWidget {
     final globalKey = ref.watch(captureKeyProvider);
     final imageSize = ref.watch(imageSizeProvider);
     return Scaffold(
+        backgroundColor: Colors.lightBlue,
         body: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: SingleChildScrollView(

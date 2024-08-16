@@ -1,4 +1,5 @@
 import 'package:design_on_dart/designs/cat/cat.dart';
+import 'package:design_on_dart/designs/cloud/cloud.dart';
 import 'package:design_on_dart/designs/sun/sun.dart';
 import 'package:design_on_dart/designs/top/component/go_design_button.dart';
 import 'package:design_on_dart/designs/top/component/many_cat_button.dart';
@@ -22,6 +23,10 @@ class TopScreen extends StatelessWidget {
             GoDesignButton(
               designName: 'Cat',
               imageWidget: Cat(),
+            ),
+            GoDesignButton(
+              designName: 'Cloud',
+              imageWidget: Cloud(),
             ),
             ManyCatButton()
           ],
